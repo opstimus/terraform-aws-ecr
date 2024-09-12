@@ -41,13 +41,13 @@ This example demonstrates how to use the module to create an ECR repository with
 
 ```hcl
 module "ecr_repository" {
-  source      = "path_to_your_module"
+  source                = "github.com/opstimus/terraform-aws-ecr?ref=v<RELEASE>"
   
-  project             = "my-project"
-  service             = "backend"
-  image_tag_mutability = true
-  scan_on_push        = true
-  account_ids         = ["123456789012", "210987654321"]
+  project               = "my-project"
+  service               = "backend"
+  image_tag_mutability  = true
+  scan_on_push          = true
+  account_ids           = ["123456789012", "210987654321"]
 }
 ```
 
