@@ -50,3 +50,32 @@ resource "aws_ecr_repository_policy" "main" {
   repository = aws_ecr_repository.main.name
   policy     = data.aws_iam_policy_document.main.json
 }
+
+resource "aws_iam_user" "main" {
+  name = "${var.project}-${var.service}-ecr"
+}
+
+resource "aws_iam_user_policy" "main" {
+  name = "${var.project}-${var.service}-ecr-policy"
+  user = aws_iam_user.s3.name
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = [
+          "ecr:GetAuthorizationToken"
+        ]
+        Effect   = "Allow"
+        Resource = aws_ecr_repository.main.arn
+      },
+      {
+        Action = [
+          "ecr:*",
+        ]
+        Effect   = "Allow"
+        Resource = aws_ecr_repository.main.arn
+      }
+    ]
+  })
+}
