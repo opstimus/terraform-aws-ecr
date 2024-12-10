@@ -57,21 +57,27 @@ resource "aws_iam_user" "main" {
 
 resource "aws_iam_user_policy" "main" {
   name = "${var.project}-${var.service}-ecr-policy"
-  user = aws_iam_user.s3.name
+  user = aws_iam_user.main.name
 
   policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
       {
-        Action = [
-          "ecr:GetAuthorizationToken"
+        actions = [
+          "ecr:GetDownloadUrlForLayer",
+          "ecr:BatchGetImage",
+          "ecr:BatchCheckLayerAvailability"
         ]
+
         Effect   = "Allow"
         Resource = aws_ecr_repository.main.arn
       },
       {
-        Action = [
-          "ecr:*",
+        actions = [
+          "ecr:PutImage",
+          "ecr:InitiateLayerUpload",
+          "ecr:UploadLayerPart",
+          "ecr:CompleteLayerUpload"
         ]
         Effect   = "Allow"
         Resource = aws_ecr_repository.main.arn
