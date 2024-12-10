@@ -63,17 +63,16 @@ resource "aws_iam_user_policy" "main" {
     Version = "2012-10-17"
     Statement = [
       {
-        actions = [
+        Action = [
           "ecr:GetDownloadUrlForLayer",
           "ecr:BatchGetImage",
           "ecr:BatchCheckLayerAvailability"
         ]
-
         Effect   = "Allow"
         Resource = aws_ecr_repository.main.arn
       },
       {
-        actions = [
+        Action = [
           "ecr:PutImage",
           "ecr:InitiateLayerUpload",
           "ecr:UploadLayerPart",
