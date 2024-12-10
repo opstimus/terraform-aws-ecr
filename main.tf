@@ -64,6 +64,7 @@ resource "aws_iam_user_policy" "main" {
     Statement = [
       {
         Action = [
+          "ecr:GetAuthorizationToken",
           "ecr:GetDownloadUrlForLayer",
           "ecr:BatchGetImage",
           "ecr:BatchCheckLayerAvailability"
@@ -73,6 +74,7 @@ resource "aws_iam_user_policy" "main" {
       },
       {
         Action = [
+          "ecr:GetAuthorizationToken",
           "ecr:PutImage",
           "ecr:InitiateLayerUpload",
           "ecr:UploadLayerPart",
