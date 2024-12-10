@@ -64,17 +64,13 @@ resource "aws_iam_user_policy" "main" {
     Statement = [
       {
         Action = [
-          "ecr:GetAuthorizationToken",
-          "ecr:GetDownloadUrlForLayer",
-          "ecr:BatchGetImage",
-          "ecr:BatchCheckLayerAvailability"
+          "ecr:GetAuthorizationToken"
         ]
         Effect   = "Allow"
-        Resource = aws_ecr_repository.main.arn
+        Resource = "*"
       },
       {
         Action = [
-          "ecr:GetAuthorizationToken",
           "ecr:PutImage",
           "ecr:InitiateLayerUpload",
           "ecr:UploadLayerPart",
