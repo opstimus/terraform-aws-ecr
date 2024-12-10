@@ -59,7 +59,7 @@ resource "aws_iam_user" "main" {
 resource "aws_iam_user_policy" "main" {
   count = var.create_iam_user ? 1 : 0
   name  = "${var.project}-${var.service}-ecr-policy"
-  user  = aws_iam_user.main.name
+  user  = aws_iam_user.main[0].name
 
   policy = jsonencode({
     Version = "2012-10-17"
