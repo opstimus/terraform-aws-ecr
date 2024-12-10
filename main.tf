@@ -71,7 +71,15 @@ resource "aws_iam_user_policy" "main" {
       },
       {
         Action = [
-          "ecr:BatchCheckLayerAvailability",
+          "ecr:GetDownloadUrlForLayer",
+          "ecr:BatchGetImage",
+          "ecr:BatchCheckLayerAvailability"
+        ]
+        Effect   = "Allow"
+        Resource = aws_ecr_repository.main.arn
+      },
+      {
+        Action = [
           "ecr:PutImage",
           "ecr:InitiateLayerUpload",
           "ecr:UploadLayerPart",
