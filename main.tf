@@ -71,6 +71,7 @@ resource "aws_iam_user_policy" "main" {
       },
       {
         Action = [
+          "ecr:BatchCheckLayerAvailability",
           "ecr:PutImage",
           "ecr:InitiateLayerUpload",
           "ecr:UploadLayerPart",
