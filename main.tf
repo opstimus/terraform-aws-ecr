@@ -52,12 +52,14 @@ resource "aws_ecr_repository_policy" "main" {
 }
 
 resource "aws_iam_user" "main" {
-  name = "${var.project}-${var.service}-ecr"
+  count = var.create_iam_user ? 1 : 0
+  name  = "${var.project}-${var.service}-ecr"
 }
 
 resource "aws_iam_user_policy" "main" {
-  name = "${var.project}-${var.service}-ecr-policy"
-  user = aws_iam_user.main.name
+  count = var.create_iam_user ? 1 : 0
+  name  = "${var.project}-${var.service}-ecr-policy"
+  user  = aws_iam_user.main.name
 
   policy = jsonencode({
     Version = "2012-10-17"
