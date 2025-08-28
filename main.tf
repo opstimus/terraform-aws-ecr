@@ -6,10 +6,7 @@ resource "aws_ecr_repository" "main" {
     scan_on_push = var.scan_on_push
   }
 
-  tags = {
-    Name     = "${var.project}-${var.service}"
-    Workload = var.workload
-  }
+  tags = var.tags
 }
 
 locals {
