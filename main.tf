@@ -5,6 +5,11 @@ resource "aws_ecr_repository" "main" {
   image_scanning_configuration {
     scan_on_push = var.scan_on_push
   }
+
+  tags = {
+    Name     = "${var.project}-${var.service}"
+    Workload = var.workload
+  }
 }
 
 locals {

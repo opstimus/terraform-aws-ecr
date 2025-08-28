@@ -8,6 +8,12 @@ variable "service" {
   description = "Name of the service, i.e backend"
 }
 
+variable "workload" {
+  type        = string
+  description = "Workload tag"
+  default     = "default"
+}
+
 variable "image_tag_mutability" {
   type = bool
 }
