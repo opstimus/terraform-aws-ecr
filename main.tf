@@ -129,7 +129,7 @@ data "aws_iam_policy_document" "role_trust" {
 
 resource "aws_iam_role" "main" {
   count              = var.create_iam_role ? 1 : 0
-  name               = "${var.project}-${var.service}-ecr-role"
+  name               = "${var.project}-${var.service}-ecr"
   assume_role_policy = data.aws_iam_policy_document.role_trust[0].json
 }
 
