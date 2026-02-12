@@ -13,4 +13,3 @@ jobs:
   lint:
     name: "Lint"
     uses: opstimus/github-actions-terraform/.github/workflows/lint.yml@v1
-
