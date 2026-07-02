@@ -1,3 +1,12 @@
+> ⚠️ **Moved to the monorepo.**
+> This module now lives in [`opstimus/terraform-modules`](https://github.com/opstimus/terraform-modules) at `modules/aws-ecr`.
+>
+> ```hcl
+> source = "git::https://github.com/opstimus/terraform-modules.git//modules/aws-ecr?ref=aws-ecr/v2.0.0"
+> ```
+>
+> This repository remains for existing consumers; new development happens in the monorepo.
+
 # ECR Repository Module
 
 ## Description
